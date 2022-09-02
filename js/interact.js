@@ -3,6 +3,8 @@ import { SimDB } from "./core/SimDB.js";
 import { ObjectTree } from "./ObjectTree.js";
 import { WaveTable } from "./wave_table/WaveTable.js";
 
+import { parseWith_vcdvcd } from "./parse_vcd.js";
+
 // TODO should be moved somewhere else.
 export var config = {};
 
@@ -21,6 +23,15 @@ function showSignals() {
 
 $(".demo-file-button").click(function () {
   $.ajax({
+    url: $(this).attr("data-file"),
+    dataType: "text",
+    success: function (vcdfile) {
+      initShow(parseWith_vcdvcd(null, vcdfile))
+    }
+  });
+});
+/*
+  $.ajax({
     url: "parse-vcd",
     type: "POST",
     data: JSON.stringify({
@@ -35,6 +46,7 @@ $(".demo-file-button").click(function () {
     success: initShow,
   });
 });
+*/
 
 $("#zoom-fit").click(() => {
   waveTable.zoomFit();
@@ -207,6 +219,12 @@ function openFile(event) {
   reader.readAsText(input.files[0], "UTF-8");
   reader.onload = function (evt) {
     console.log(evt.target.result);
+    initShow(parseWith_vcdvcd(input.files[0].name, evt.target.result));
+  };
+
+/*
+  reader.onload = function (evt) {
+    console.log(evt.target.result);
 
     $.ajax({
       url: "parse-vcd",
@@ -220,6 +238,7 @@ function openFile(event) {
       success: initShow,
     });
   };
+*/
 }
 
 $(function () {
