@@ -30,23 +30,6 @@ $(".demo-file-button").click(function () {
     }
   });
 });
-/*
-  $.ajax({
-    url: "parse-vcd",
-    type: "POST",
-    data: JSON.stringify({
-      fname: $(this).attr("data-file"),
-      other_fields: {
-        a: 1,
-        b: null,
-      },
-    }),
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    success: initShow,
-  });
-});
-*/
 
 $("#zoom-fit").click(() => {
   waveTable.zoomFit();
@@ -221,24 +204,6 @@ function openFile(event) {
     console.log(evt.target.result);
     initShow(parseWith_vcdvcd(input.files[0].name, evt.target.result));
   };
-
-/*
-  reader.onload = function (evt) {
-    console.log(evt.target.result);
-
-    $.ajax({
-      url: "parse-vcd",
-      type: "POST",
-      data: JSON.stringify({
-        fname: input.files[0].name,
-        content: evt.target.result,
-      }),
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      success: initShow,
-    });
-  };
-*/
 }
 
 $(function () {
