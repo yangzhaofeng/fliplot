@@ -1,3 +1,4 @@
+import { readFileSync } from 'fs'
 const _VALUE = new Set(['0', '1', 'x', 'X', 'z', 'Z'])
 const _VECTOR_VALUE_CHANGE = new Set(['b', 'B', 'r', 'R'])
 
@@ -27,19 +28,14 @@ export class VCDVCD {
 		var time = 0
 		var print_dumps_refs = []
 
-/*		if (typeof window === 'undefined'){
-			if(vcd_path){
-				const fs = require('fs')
-				fs.readFile(vcd_path, 'utf-8', (err, data) => {
-					if(err){
-						console.error(err)
-						return
-					}
-					vcd_content = data
-				})
+		if (typeof window === 'undefined'){
+			if(!vcd_content && vcd_path){
+				//console.log(vcd_path)
+				vcd_content = readFileSync(vcd_path, 'utf-8')
+				console.log(vcd_content)
 			}
-		}*/
-		//console.log(vcd_content)
+		}
+
 		const vcd_lines = vcd_content.split('\n')
 		//console.log(vcd_lines)
 		for(var line of vcd_lines){
