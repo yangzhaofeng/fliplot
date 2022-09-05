@@ -21,8 +21,9 @@
     "webpack-dev-server": "^4.10.1"
   },
   "scripts": {
-    "test": "npx mocha js/test/**/*js",
-    "dev": "webpack --mode development"
+    "test": "npx mocha test/**/*js",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",

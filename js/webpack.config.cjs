@@ -1,5 +1,5 @@
 module.exports = {
-    entry: './js/interact.js',
+    entry: './interact.js',
     module: {
         rules: [
             {
