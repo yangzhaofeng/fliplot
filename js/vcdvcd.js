@@ -116,7 +116,7 @@ export class VCDVCD {
 				const identifier_code = ls[3]
 				const name = ls.slice(4, -1).join('')
 				const path = hier.join('.')
-				const reference = path + '.' + name
+				const reference = (path ? path : 'EXTERNAL') + '.' + name
 				if(signals.includes(reference) || all_sigs){
 					this._signals.push(reference)
 					if(!(identifier_code in this._data)){
